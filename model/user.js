@@ -7,6 +7,7 @@ const Users = mongoose.model('Users', {
     user_id: String,
     user_email: String,
     user_password: String,
+    user_admin: Boolean
 })
 
 export default Users
