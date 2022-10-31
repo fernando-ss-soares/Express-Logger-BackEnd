@@ -4,6 +4,42 @@ import findUser from "../utils/id_sequencial_user.js";
 
 const router = Router();
 
+router.get("/", async (req, res) => {
+    const { user_email, 
+        user_password } = req.body
+
+    if (!user_email || user_email == "") {
+        return res.status(406).json({
+            "message":"O campo product_name está inválido!"
+        });
+    }
+
+    if (!user_password || user_password == "") {
+        return res.status(406).json({
+            "message":"O campo product_describe está inválido!"
+        });
+    }
+
+    const Payload_User = {
+        user_email,
+        user_password
+    }
+
+    try {
+        const Response_Payload_User = await Model_User.findOne(Payload_User);
+
+        if (Response_Payload_User == null) {
+            return res.status(409).json({
+                "message":"Usuário ou senha inválido"
+            })
+        }
+
+        return res.status(200).json(Response_Payload_User);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+})
+
 router.post("/", async (req, res) => {
     
     const { user_name,
@@ -11,7 +47,8 @@ router.post("/", async (req, res) => {
     user_id,
     user_cpf,
     user_endereco,
-    user_email } = req.body
+    user_email,
+    user_password } = req.body
     
     if (!user_name || user_name == "") {
         return res.status(406).json({
@@ -42,6 +79,12 @@ router.post("/", async (req, res) => {
             "message":"O campo request_email está inválido!"
         });
     }
+
+    if (!user_password || user_password == "") {
+        return res.status(406).json({
+            "message":"O campo user_password está inválido!"
+        });
+    }
     
     const Payload_User = {
         user_name,
@@ -49,7 +92,8 @@ router.post("/", async (req, res) => {
         user_id : await findUser(),
         user_cpf,
         user_endereco,
-        user_email
+        user_email,
+        user_password
     }
 
     try {
