@@ -23,11 +23,11 @@ morganBody(app);
 app.use("/request", Request);
 app.use("/user", User);
 
-app.get("/", (res) => {
+app.get("/", (req, res) => {
     res.status(200).json({
-        "message":"Servidor funcionando"
+        "message":"Servidor funcionando!"
     })
-});
+})
 
 try {
     mongoose.connect(`mongodb://localhost:27017/Express?retryWrites=true&w=majority`);
