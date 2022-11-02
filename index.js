@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 })
 
 try {
-    mongoose.connect(`mongodb://localhost:27017/Express?retryWrites=true&w=majority`);
+    mongoose.connect(`mongodb+srv://santosfernando2377:34778929@cluster0.tlgvyak.mongodb.net/?retryWrites=true&w=majority`);
     console.log('Conectamos ao Banco de Dados')
     app.listen(3000);
 } catch (error) {
