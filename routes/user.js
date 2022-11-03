@@ -10,13 +10,13 @@ router.get("/", async (req, res) => {
 
     if (!user_email || user_email == "") {
         return res.status(406).json({
-            "message":"O campo product_name está inválido!"
+            "message":"O campo user_email está inválido!"
         });
     }
 
     if (!user_password || user_password == "") {
         return res.status(406).json({
-            "message":"O campo product_describe está inválido!"
+            "message":"O campo user_password está inválido!"
         });
     }
 
@@ -52,31 +52,31 @@ router.post("/", async (req, res) => {
     
     if (!user_name || user_name == "") {
         return res.status(406).json({
-            "message":"O campo product_name está inválido!"
+            "message":"O campo user_name está inválido!"
         });
     }
 
     if (!user_lastname || user_lastname == "") {
         return res.status(406).json({
-            "message":"O campo product_describe está inválido!"
+            "message":"O campo user_lastname está inválido!"
         });
     }
 
     if (!user_cpf || user_cpf == "") {
         return res.status(406).json({
-            "message":"O campo request_status está inválido!"
+            "message":"O campo user_cpf está inválido!"
         });
     }
 
     if (!user_endereco || user_endereco == "") {
         return res.status(406).json({
-            "message":"O campo request_email está inválido!"
+            "message":"O campo user_endereco está inválido!"
         });
     }
 
     if (!user_email || user_email == "") {
         return res.status(406).json({
-            "message":"O campo request_email está inválido!"
+            "message":"O campo user_email está inválido!"
         });
     }
 
