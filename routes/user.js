@@ -6,7 +6,7 @@ const router = Router();
 
 router.get("/", async (req, res) => {
     const { user_email, 
-        user_password } = req.body
+        user_password } = req.query
 
     if (!user_email || user_email == "") {
         return res.status(406).json({
