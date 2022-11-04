@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
     user_lastname,
     user_id,
     user_cpf,
-    user_endereco,
+    user_address,
     user_email,
     user_password } = req.body
     
@@ -68,7 +68,7 @@ router.post("/", async (req, res) => {
         });
     }
 
-    if (!user_endereco || user_endereco == "") {
+    if (!user_address || user_address == "") {
         return res.status(406).json({
             "message":"O campo user_endereco está inválido!"
         });
@@ -91,7 +91,7 @@ router.post("/", async (req, res) => {
         user_lastname,
         user_id : await findUser(),
         user_cpf,
-        user_endereco,
+        user_address,
         user_email,
         user_password
     }
