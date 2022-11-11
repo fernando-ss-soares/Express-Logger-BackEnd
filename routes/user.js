@@ -122,4 +122,41 @@ router.post("/", async (req, res) => {
 
 })
 
+router.put("/", async (req, res) => {
+    const {
+        user_id,
+        user_address,
+        user_email } = req.body
+
+        if (!user_id || user_id == "") {
+            return res.status(406).json({
+                "message":"O campo user_id está inválido!"
+            });
+        }
+    
+        if (!user_address || user_address == "") {
+            return res.status(406).json({
+                "message":"O campo user_address está inválido!"
+            });
+        }
+    
+        if (!user_email || user_email == "") {
+            return res.status(406).json({
+                "message":"O campo user_email está inválido!"
+            });
+        }
+
+        const Payload_User = {
+            user_id,
+            user_address,
+            user_email
+        }
+
+        try {
+            
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+})
+
 export default router;

@@ -1,6 +1,5 @@
 import { Router } from "express";
 import Model_Request from "../model/request.js"
-import Model_User from "../model/user.js"
 import findRequest from "../utils/id_sequencial_request.js";
 import Validate_User from "../utils/validate_user_id.js";
 
@@ -8,12 +7,7 @@ const router = Router();
 
 router.post("/", async (req, res) => {
     
-    const { product_name, 
-        product_describe, 
-        request_id, 
-        request_status, 
-        request_email,
-        user_id } = req.body
+    const { product_name, product_describe, request_id, request_status, request_address, request_email, user_id } = req.body
     
     if (!product_name || product_name == "") {
         return res.status(406).json({
@@ -39,6 +33,12 @@ router.post("/", async (req, res) => {
         });
     }
 
+    if (!request_address || request_address == "") {
+        return res.status(406).json({
+            "message":"O campo request_address está inválido!"
+        });
+    }
+
     if (!user_id || user_id == "") {
         return res.status(406).json({
             "message":"O campo user_id está inválido!"
@@ -49,7 +49,8 @@ router.post("/", async (req, res) => {
         product_name, 
         product_describe, 
         request_id : await findRequest(),
-        request_status, 
+        request_status,
+        request_address, 
         request_email,
         user_id : await Validate_User(user_id)
     }

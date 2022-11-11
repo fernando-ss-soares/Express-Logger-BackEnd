@@ -5,6 +5,7 @@ const Requests = mongoose.model('Requests', {
     product_describe: String,
     request_id: String,
     request_status: String,
+    request_address: String,
     request_email: String,
     user_id: String
 })
